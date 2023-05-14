@@ -37,6 +37,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+          backgroundColor: Color(0xDBFFFFFF),
           appBar: AppBar(
             title: Text('Choose your advice for this day!'),
             backgroundColor: Color.fromARGB(255, 120, 76, 167),
