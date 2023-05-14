@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
-  final Function selectedHandler;
+  final VoidCallback selectedHandler;
   final String variantOfAnswer;
   Answer(this.selectedHandler, this.variantOfAnswer);
 
@@ -10,7 +10,7 @@ class Answer extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () => selectedHandler(),
+        onPressed: selectedHandler,
         child: Text(variantOfAnswer),
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.blue)),

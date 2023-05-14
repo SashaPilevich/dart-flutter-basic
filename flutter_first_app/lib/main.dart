@@ -15,16 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var _questionIndex = 0;
-  void _answerQuestion() {
-    setState(() {
-      _questionIndex = _questionIndex + 1;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    var questions = [
+  final questions = const[
       {
         'questionText': 'What\'s your favorite country?',
         'answers': ['Spain', 'Portugal', 'German', 'Poland']
@@ -43,12 +34,21 @@ class _MyAppState extends State<MyApp> {
         ]
       },
     ];
+  var _questionIndex = 0;
+  void _answerQuestion() {
+    setState(() {
+      _questionIndex = _questionIndex + 1;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Text('Quiz'),
         ),
-        body: Column(
+        body:_questionIndex < questions.length ? Column(
           children: [
             Question(questions[_questionIndex]['questionText'] as String),
             ...(questions[_questionIndex]['answers'] as List<String>)
@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
               return Answer(_answerQuestion, answer);
             }).toList()
           ],
-        ),
+        ) : Center(child: Text('You did it!'),),
       ),
     );
   }
